@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1440px" height="1024px" viewBox="0 0 1440 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53 (72520) - https://sketchapp.com -->
+    <title>NOBS Web Logo</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <radialGradient cx="41.5412959%" cy="34.9834836%" fx="41.5412959%" fy="34.9834836%" r="61.12627%" id="radialGradient-1">
+            <stop stop-color="#FFFFFF" stop-opacity="0.693892045" offset="0%"></stop>
+            <stop stop-color="#AEAEAE" stop-opacity="0.622951267" offset="29.8134371%"></stop>
+            <stop stop-color="#282828" stop-opacity="0.913003131" offset="70.6868193%"></stop>
+            <stop stop-color="#000000" offset="100%"></stop>
+        </radialGradient>
+        <circle id="path-2" cx="203.5" cy="204.5" r="186.5"></circle>
+        <filter x="-3.9%" y="-2.8%" width="107.8%" height="107.8%" filterUnits="objectBoundingBox" id="filter-3">
+            <feMorphology radius="0.5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="4" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feMorphology radius="1" operator="erode" in="SourceAlpha" result="shadowInner"></feMorphology>
+            <feOffset dx="0" dy="4" in="shadowInner" result="shadowInner"></feOffset>
+            <feComposite in="shadowOffsetOuter1" in2="shadowInner" operator="out" result="shadowOffsetOuter1"></feComposite>
+            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <filter x="-2.8%" y="-1.7%" width="105.6%" height="105.6%" filterUnits="objectBoundingBox" id="filter-4">
+            <feGaussianBlur stdDeviation="1.5" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="0" dy="1" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="NOBS-Web-Logo" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Handle" transform="translate(888.052262, 662.532213) rotate(-53.000000) translate(-888.052262, -662.532213) translate(854.052262, 509.032213)" fill="#C7C7C7" stroke="#000000" stroke-width="1.90999997">
+            <path d="M30.2925639,52.8617599 C22.7270366,52.8617599 16.4658252,58.7449519 15.9952961,66.2958331 L2.14743934,288.52124 C1.69627575,295.76135 6.72849793,302.195892 13.8639589,303.502779 C20.7210824,304.758686 27.5771453,305.386543 34.4328308,305.386543 C41.2689617,305.386543 48.093498,304.762262 54.907131,303.513536 C62.0418494,302.205965 67.0732095,295.771787 66.6220836,288.532282 L52.7735365,66.2958331 C52.3030074,58.7449519 46.041796,52.8617599 38.4762687,52.8617599 L30.2925639,52.8617599 Z" id="Rectangle"></path>
+            <ellipse id="Oval" cx="35.0033054" cy="33.5581955" rx="19.1666667" ry="22.9565217"></ellipse>
+            <rect id="Rectangle" x="15.7680163" y="45.4623143" width="36.4233334" height="19.1334783" rx="3.81999993"></rect>
+            <rect id="Rectangle" x="16.2452197" y="1.42332171" width="36.4233334" height="19.1334783" rx="3.81999993"></rect>
+        </g>
+        <g id="Lens" transform="translate(409.000000, 241.000000)">
+            <circle id="Outer-ring" stroke="#000000" stroke-width="8.82" fill-opacity="0.28" fill="#FFFFFF" cx="204.369996" cy="204.369996" r="204.369996"></circle>
+            <circle id="Inner-ring" stroke="#000000" stroke-width="8.91" cx="204.369996" cy="204.369996" r="194.819997"></circle>
+            <circle id="Gradient" fill="url(#radialGradient-1)" opacity="0.236025856" style="mix-blend-mode: hard-light;" cx="203.819997" cy="207.819997" r="194.819997"></circle>
+            <g id="Glare">
+                <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-2"></use>
+                <use stroke="#979797" stroke-width="1" xlink:href="#path-2"></use>
+            </g>
+            <text id="NOB.S" stroke="#000000" stroke-width="3.81999993" transform="translate(204.000000, 197.500000) rotate(-20.000000) translate(-204.000000, -197.500000) " font-family="Exo2.0-Regular, Exo 2.0" font-size="68.7599988" font-weight="normal" letter-spacing="4.2975" fill="#3E0047">
+                <tspan x="97.5767117" y="225">NOB.S</tspan>
+            </text>
+            <path d="M37.4053566,59.659242 C54.7616306,50.3979191 73.4582452,44.2133031 92.6330651,41.2112511 C139.906784,28.3277357 192.456695,37.1316776 234.037042,69.6178047 C281.454592,106.664455 302.440059,165.003733 294.035179,220.542517 C293.140519,243.516267 287.714297,266.453639 277.581779,287.931553 C324.75381,215.440244 309.40049,117.643891 239.976988,63.4043065 C179.422697,16.0941092 96.6662754,16.7160757 37.4053566,59.659242 Z" id="Combined-Shape" stroke="#EFEFEF" stroke-width="5.825005" fill="#E4E4E4" transform="translate(171.075438, 157.804091) rotate(-78.000000) translate(-171.075438, -157.804091) "></path>
+        </g>
+    </g>
+</svg>
