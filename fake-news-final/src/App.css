@@ -38,16 +38,21 @@
 
 .rounded-corner{
   border: 2em;
-  border-radius: 10px;
+  border-radius: 3px;
 }
 
 .table-body{
   background-color:#282c34;
+  width: 100%;
+  margin: 0;
 }
 
-.table-row{
-  border: 2em;
-  border-color:black;
+.table-border{
+  border: groove;
+  border-width: 5px;
+  margin: 0px;
+  margin-bottom: 2px;
+  border-color: rgba(27, 31, 36, 0.966);
 }
 
 .App-logo {

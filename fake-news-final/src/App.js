@@ -20,15 +20,15 @@ class App extends Component {
     article.forEach(article => {
       console.log(article.title);
       const articleRow =
-        <Table bordered key={article.id}>
-          <tbody className="table-body">
+        <Table className="table-border table-body" key={article.id}>
+          <tbody style={{width:'100%'}}>
             <tr>
-              <td className="table-row">
+              <td>
                 <Card className="bg-dark text-white">
                   <Card.Img className="rounded-corner" height={150} width={200} src={article.imgUrl} alt="Card image" />
                 </Card>
               </td>
-              <td className="table-row">
+              <td style={{width:'100%'}}>
                 <h3 className="App-font">{article.title}</h3>
                 <p className="App-font-p">{article.description}</p>
                 <Button className='App-button'>Statistics</Button>
