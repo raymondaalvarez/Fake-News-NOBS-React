@@ -6,8 +6,9 @@ newsapi.v2.topHeadlines({
   sources: 'bbc-news,the-verge',
   q: 'bitcoin',
   category: 'business',
-  language: 'en',
-  country: 'us'
+  from: '2019-01-25',
+  to: '2019-2-24',
+  language: 'en'
 }).then(response => {
   console.log(response);
   /*
@@ -16,6 +17,8 @@ newsapi.v2.topHeadlines({
       articles: [...]
     }
   */
+}).catch(function (response) {
+  console.log(response);
 });
 // To query /v2/everything
 // You must include at least one q, source, or domain
@@ -23,8 +26,8 @@ newsapi.v2.everything({
   q: 'bitcoin',
   sources: 'bbc-news,the-verge',
   domains: 'bbc.co.uk, techcrunch.com',
-  from: '2017-12-01',
-  to: '2017-12-12',
+  from: '2019-01-25',
+  to: '2019-2-24',
   language: 'en',
   sortBy: 'relevancy',
   page: 2
@@ -36,13 +39,17 @@ newsapi.v2.everything({
       articles: [...]
     }
   */
+}).catch(function (response) {
+  console.log(response);
 });
 // To query sources
 // All options are optional
-newsapi.v2.sources({
-  category: 'technology',
-  language: 'en',
-  country: 'us'
+newsapi.v2.everything({
+  q:"Donald Trump",
+  phrase:'Donald Trump',
+  from: '2019-01-25',
+  to: '2019-2-24',
+  language: 'en'
 }).then(response => {
   console.log(response);
   /*
@@ -51,4 +58,6 @@ newsapi.v2.sources({
       sources: [...]
     }
   */
+}).catch(function (response) {
+  console.log(response);
 });

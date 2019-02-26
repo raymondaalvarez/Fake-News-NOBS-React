@@ -1,16 +1,68 @@
+.fn-header {
+  min-height:100vh;
+  max-Height:999px;
+  background-Size: 100% 100%;
+}
 .App {
   text-align: center;
 }
 
+.App-font{
+  font-size: 12;
+  color: white;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.App-font-p{
+  font-size: 8;
+  color:white;
+  font-family: sans-serif;
+  text-align: left;
+}
+
+.App-button{
+  border: 3em;
+  padding: 10px;
+  border-color: whitesmoke;
+  margin: 1%;
+  border-radius: 20px;
+  font-size: 12;
+}
+.App-button :hover{
+    text-decoration: underline;
+    border-color: white;
+    border-width: 5px;
+
+}
+
+.rounded-corner{
+  border: 2em;
+  border-radius: 10px;
+}
+
+.table-body{
+  background-color:#282c34;
+}
+
+.table-row{
+  border: 2em;
+  border-color:black;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+  height: auto;
+  width: auto;
+  max-height: 90px;
+  max-width: 100px;
   pointer-events: none;
+  float: left;
 }
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 5vh;
   display: flex;
   flex-direction: column;
   align-items: center;
