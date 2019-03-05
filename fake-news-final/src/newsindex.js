@@ -6,8 +6,8 @@ newsapi.v2.topHeadlines({
   sources: 'bbc-news,the-verge',
   q: 'bitcoin',
   category: 'business',
-  from: '2019-01-25',
-  to: '2019-2-24',
+  from: '2019-01-26',
+  to: '2019-02-03',
   language: 'en'
 }).then(response => {
   console.log(response);
@@ -26,8 +26,8 @@ newsapi.v2.everything({
   q: 'bitcoin',
   sources: 'bbc-news,the-verge',
   domains: 'bbc.co.uk, techcrunch.com',
-  from: '2019-01-25',
-  to: '2019-2-24',
+  from: '2019-01-26',
+  to: '2019-02-11',
   language: 'en',
   sortBy: 'relevancy',
   page: 2
@@ -47,8 +47,8 @@ newsapi.v2.everything({
 newsapi.v2.everything({
   q:"Donald Trump",
   phrase:'Donald Trump',
-  from: '2019-01-25',
-  to: '2019-2-24',
+  from: '2019-01-26',
+  to: '2019-02-01',
   language: 'en'
 }).then(response => {
   console.log(response);
