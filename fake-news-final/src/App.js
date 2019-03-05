@@ -7,6 +7,7 @@ import background from './background.png';
 import { BrowserRouter as Router, Switch, Link, Route} from "react-router-dom";
 import Loading from "./loading";
 import Home from "./home";
+import Results from "./results";
 import { withRouter } from 'react-router';
 
 
@@ -61,13 +62,14 @@ class App extends Component {
           <Row style={{width:'100%',margin:'0 auto',textAlign:'center'}}>
               <Form>
                       <FormControl style={{display:'block', margin: '0px', width:'99%', paddingTop:"8px", paddingBottom:"8px", paddingLeft:"8px", contentAlign:"center"}} type="text" placeholder="Search" className="text-center"/>
-                      <Button><Link to={"/loading"} className="nav-link" replace>Search</Link></Button>
+                      <Button><Link to={"/results"} className="nav-link" replace>Search</Link></Button>
               </Form>
           </Row>
 
             <Switch>
                 <Route exact path="/" component={Home}/>
                 <Route path="/loading" component={Loading}/>
+                <Route path="/results" component={Results}/>
             </Switch>
           </div>
         </Router>
