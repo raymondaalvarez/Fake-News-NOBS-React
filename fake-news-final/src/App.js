@@ -44,9 +44,22 @@ class App extends Component {
       articleRows.push(articleRow);
     })
 
-    this.state = {rows: articleRows}
-
+    this.state = {rows: articleRows, value: ''}
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+handleChange(event){
+  this.setState({value: event.target.value});
+}
+
+handleSubmit(event){
+  //call API here
+  alert('The input is: ' + this.state.value)
+  console.log("Input is: " + this.state.value);
+  event.preventDefault();
+}
+
     render() {
       return (
         <Router>
@@ -60,9 +73,9 @@ class App extends Component {
             </tbody>
           </Table>
           <Row style={{width:'100%',margin:'0 auto',textAlign:'center'}}>
-              <Form>
-                      <FormControl style={{display:'block', margin: '0px', width:'99%', paddingTop:"8px", paddingBottom:"8px", paddingLeft:"8px", contentAlign:"center"}} type="text" placeholder="Search" className="text-center"/>
-                      <Button><Link to={"/results"} className="nav-link" replace>Search</Link></Button>
+              <Form onSubmit={this.handleSubmit}>
+                      <label><input value={this.state.value} onChange={this.handleChange} style={{display:'block', margin: '0px', width:'99%', paddingTop:"8px", paddingBottom:"8px", paddingLeft:"8px", contentAlign:"center"}} type="text" placeholder="Search" className="input"/></label>
+                      <Link to={"/results"} className="nav-link" replace> <input type="submit" value="Submit" /> </Link>
               </Form>
           </Row>
 
@@ -78,6 +91,10 @@ class App extends Component {
 }
 
 export default App;
+//The input is stored in this.state.value
+
+
+
 //add new routes under Switch tag
 //also have to <Link to={"/newpage"} className="nav-link" replace> </Link> in whatever button you make to link to the new page
 
