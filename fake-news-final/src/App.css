@@ -88,3 +88,52 @@
     transform: rotate(360deg);
   }
 }
+
+@keyframes fadeout {
+  from {opacity: 1;}
+  to {opacity: 0;}
+}
+
+#myBar {
+  width: 0%;
+  height: 40px;
+  background-color: #4280f4;
+  text-align: center;
+  line-height: 40px;
+  color: white;
+
+}
+
+#progress{
+  width: 40%;
+  background-color: black;
+  margin-left: 30%;
+}
+
+#sizing{
+  height: 10%;
+  width: 10%;
+  margin-left: 45%;
+  margin-bottom: 2%;
+}
+
+#loading_text{
+  color: white;
+  text-align: center;
+  font-size: 350%;
+  font-weight: bold;
+  margin-top: 10%;
+}
+
+.background{
+  background-image: url('background.png');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-width: 100%;
+  min-height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
