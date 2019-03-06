@@ -70,9 +70,8 @@ getArticleData(link){
     response.text().then(function(data) {
     //console.log(data);
     var el = document.createElement('html');
-    el.innerHTML=(data);
-    newsText = $('title', el);
-    console.log(newsText);
+    el.innerHTML=data;
+    console.log(el.getElementsByTagName('title')[0]);
     });
   });
 }
