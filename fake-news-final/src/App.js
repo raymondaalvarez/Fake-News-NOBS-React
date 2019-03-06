@@ -9,6 +9,7 @@ import Loading from "./loading";
 import Home from "./home";
 import Results from "./results";
 import { withRouter } from 'react-router';
+import $ from "jquery";
 
 
 class App extends Component {
@@ -57,6 +58,17 @@ handleSubmit(event){
   //call API here
   console.log("Input is: " + this.state.value);
   event.preventDefault();
+  this.getArticleData(this.state.value);
+}
+
+getArticleData(link){
+//returns in html right now
+  fetch("https://cors-anywhere.herokuapp.com/"+link)
+  .then(function(response){
+    response.text().then(function(data) {
+    console.log(data);
+    });
+  });
 }
 
     render() {
