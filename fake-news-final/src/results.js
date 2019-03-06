@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from "react";
 import './App.css';
+import ArticleRow from './ArticleRow'
 import { withRouter } from 'react-router';
 import background from './background.png';
-import {Button, Navbar, Nav, FormControl ,Form, Row, Image, Card, Table} from 'react-bootstrap';
 
 class Results extends Component {
   constructor(props){
@@ -16,24 +16,7 @@ class Results extends Component {
 
     article.forEach(article => {
       console.log(article.title);
-      const articleRow =
-        <Table bordered key={article.id}>
-          <tbody className="table-body">
-            <tr>
-              <td className="table-row">
-                <Card className="bg-dark text-white">
-                  <Card.Img className="rounded-corner" height={150} width={200} src={article.imgUrl} alt="Card image" />
-                </Card>
-              </td>
-              <td className="table-row">
-                <h3 className="App-font">{article.title}</h3>
-                <p className="App-font-p">{article.description}</p>
-                <Button className='App-button'>Statistics</Button>
-                <Button className='App-button'>Read</Button>
-              </td>
-            </tr>
-          </tbody>
-        </Table>
+      const articleRow = <ArticleRow article={article}/>
       articleRows.push(articleRow);
     })
 
@@ -42,7 +25,7 @@ class Results extends Component {
   }
   render() {
     return (
-      <div> {this.state.rows} </div>
+        this.state.rows
     );
   }
 }

@@ -1,0 +1,32 @@
+.app-font{
+    font-size: 12;
+    color: white;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.app-font-p{
+    font-size: 8;
+    color:white;
+    font-family: sans-serif;
+    text-align: left;
+}
+
+.rounded-corner{
+    border: 2em;
+    border-radius: 3px;
+}
+
+.table-body{
+    background-color:#282c34;
+    width: 100%;
+    margin: 0;
+}
+
+.table-border{
+    border: groove;
+    border-width: 5px;
+    margin: 0px;
+    margin-bottom: 2px;
+    border-color: rgba(27, 31, 36, 0.966);
+}
