@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import {Button, Navbar, Nav, FormControl ,Form, Row, Image, Card, Table} from 'react-bootstrap';
+import {Button, Navbar, Nav, FormControl ,Form, Container, Row, Col, Image, NavItem, Card, Table} from 'react-bootstrap';
 import { ReactComponent as Logo } from './NOBS Web Logo.svg';
 import background from './background.png';
 //import NavLink from 'react-bootstrap/NavLink';
@@ -63,10 +63,16 @@ handleSubmit(event){
 
 getArticleData(link){
 //returns in html right now
+  var newsText = ''
+
   fetch("https://cors-anywhere.herokuapp.com/"+link)
   .then(function(response){
     response.text().then(function(data) {
-    console.log(data);
+    //console.log(data);
+    var el = document.createElement('html');
+    el.innerHTML=(data);
+    newsText = $('title', el);
+    console.log(newsText);
     });
   });
 }
@@ -84,9 +90,9 @@ getArticleData(link){
             </tbody>
           </Table>
           <Row style={{width:'100%',margin:'0 auto',textAlign:'center'}}>
-              <Form>
-                      <FormControl style={{display:'block', margin: '0px', width:'99%', paddingTop:"8px", paddingBottom:"8px", paddingLeft:"8px", contentAlign:"center"}} type="text" placeholder="Search" className="text-center"/>
-                      <Button><Link to={"/results"} className="nav-link" replace>Search</Link></Button>
+              <Form onSubmit={this.handleSubmit}>
+                      <Link to={"/results"} className="nav-link" replace> <label><input value={this.state.value} onChange={this.handleChange} style={{display:'block', margin: '0px', width:'99%', paddingTop:"8px", paddingBottom:"8px", paddingLeft:"8px", contentAlign:"center"}} type="text" placeholder="Enter article URL" className="input"/></label>  </Link>
+                      <input type="submit" value="Submit" />
               </Form>
           </Row>
 
@@ -102,6 +108,10 @@ getArticleData(link){
 }
 
 export default App;
+//The input is stored in this.state.value
+
+
+
 //add new routes under Switch tag
 //also have to <Link to={"/newpage"} className="nav-link" replace> </Link> in whatever button you make to link to the new page
 
