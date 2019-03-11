@@ -3,11 +3,13 @@ import './App.css';
 import ArticleRow from './ArticleRow'
 import { withRouter } from 'react-router';
 import background from './background.png';
+import {articleTitle} from './App';
 
 class Results extends Component {
   constructor(props){
     super(props)
     console.log("This is my initializer")
+
     var articleRows = []
     const article =[
       { id:'0', title: 'Best of Late Night: Stephen Colbert Wants to Remind You: Trump Isn’t Normal', description:"That mildly nauseous feeling you have is because for the last two years, Donald Trump has been spinning you in a tumble-dryer full of turd,” Colbert said.", content: "Seth Meyers pointed to a new argument thats becoming popular on Fox News: that perhaps Trump shouldnt declare a national emergency to build the border wall (a move that could well be struck down by federal courts anyway, experts believe) because then a future…", imgUrl:"https://static01.nyt.com/images/2019/02/21/arts/21latenight1/21latenight1-facebookJumbo.png"},
@@ -20,14 +22,17 @@ class Results extends Component {
       articleRows.push(articleRow);
     })
 
-    this.state = {rows: articleRows}
+    this.state = {rows: articleRows};
+    //console.log(articleTitle);
 
   }
+
   render() {
     return (
         this.state.rows
     );
   }
+
 }
 
 export default Results;
