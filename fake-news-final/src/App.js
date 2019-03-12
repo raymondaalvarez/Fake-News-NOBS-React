@@ -22,9 +22,7 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
 
   }
-performSearchP(promise){
 
-}
 performSearch(query){
   console.log('Perform search')
   newsapi.v2.everything({
@@ -58,31 +56,44 @@ handleSubmit(event){
   console.log("Input is: " + this.state.value);
   if (this.state.value.includes('www.')){
     console.log("TRUE");
-    console.log(this.getArticleData(this.state.value));
-    this.performSearch(this.getArticleData(this.state.value));
+    this.getArticleData(this.state.value);
   }
   else{
     this.performSearch(this.state.value);
   }
-  //this.getArticleData(this.state.value);
-  //this.performSearch(this.state.value);
   event.preventDefault();
-  //this.getArticleData(this.props.value);
 }
 
 getArticleData(link){
 //returns in html right now
-  var val;
-  val = fetch("https://cors-anywhere.herokuapp.com/"+link)
+  fetch("https://cors-anywhere.herokuapp.com/"+link)
   .then(function(response){
-    return response.text().then(function(data) {
+    response.text().then(function(data) {
     //console.log(data);
     var el = document.createElement('html');
     el.innerHTML=data;
-    return el.getElementsByTagName('title')[0].innerHTML;
+    var search = el.getElementsByTagName('title')[0].innerHTML;
+    newsapi.v2.everything({
+      q:search,
+    }).then(response => {
+      var articleRows = [];
+      var id = 0;
+      const articles = Object.values(response.articles);
+      articles.forEach(art => {
+        var article = Object.values(art);
+        article.shift();
+        console.log(article);
+        const articleRow = <ArticleRow article={article} key={id}></ArticleRow>
+        articleRows.push(articleRow);
+        id++;
+      });
+      console.log("State setted");
+      this.setState({rows: articleRows});
+
+    }).catch(function (response) {
+    });
     });
   });
-  return val;
 }
 
     render() {
