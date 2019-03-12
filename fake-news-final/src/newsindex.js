@@ -2,6 +2,7 @@ const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI('9e3ac01f44214b3e8f0bcf5c572dc0de');
 // To query /v2/top-headlines
 // All options passed to topHeadlines are optional, but you need to include at least one of them
+
 newsapi.v2.topHeadlines({
   sources: 'bbc-news,the-verge',
   q: 'bitcoin',
