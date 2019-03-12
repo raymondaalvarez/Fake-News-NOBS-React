@@ -6,8 +6,8 @@ newsapi.v2.topHeadlines({
   sources: 'bbc-news,the-verge',
   q: 'bitcoin',
   category: 'business',
-  from: '2019-02-15',
-  to: '2019-03-07',
+  from: '2019-01-26',
+  to: '2019-02-03',
   language: 'en'
 }).then(response => {
   console.log(response);
@@ -26,8 +26,8 @@ newsapi.v2.everything({
   q: 'bitcoin',
   sources: 'bbc-news,the-verge',
   domains: 'bbc.co.uk, techcrunch.com',
-  from: '2019-02-15',
-  to: '2019-03-07',
+  from: '2019-01-26',
+  to: '2019-02-11',
   language: 'en',
   sortBy: 'relevancy',
   page: 2
@@ -47,31 +47,15 @@ newsapi.v2.everything({
 newsapi.v2.everything({
   q:"Donald Trump",
   phrase:'Donald Trump',
-  from: '2019-02-15',
-  to: '2019-03-07',
+  from: '2019-01-26',
+  to: '2019-02-01',
   language: 'en'
 }).then(response => {
-  console.log('split');
   console.log(response);
   /*
     {
       status: "ok",
       sources: [...]
-    }
-  */
-}).catch(function (response) {
-  console.log(response);
-});
-
-newsapi.v2.everything({
-  q: 'Donald Trump is laying the groundwork to de-legitimize the 2020 election'
-}).then(response => {
-  console.log("testing#1");
-  console.log(response);
-  /*
-    {
-      status: "ok",
-      articles: [...]
     }
   */
 }).catch(function (response) {
