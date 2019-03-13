@@ -20,7 +20,7 @@ ul {
 }
 a:link, a:visited {
     border: 3em;
-    padding:5px;
+    padding:2px;
     padding-left: 30px;
     padding-right: 30px;
     border-radius: 20px;
@@ -37,7 +37,6 @@ a:hover{
 .App-button{
     text-align: left;
 }
-
 
 .rounded-corner{
     border: 2em;

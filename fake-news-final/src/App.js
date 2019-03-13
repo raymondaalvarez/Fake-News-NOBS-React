@@ -112,7 +112,7 @@ getArticleData(link){
             </table>
             <Form style={{width:'100%',margin:'0 auto',textAlign:'center'}} onSubmit={this.handleSubmit}>
               <input value={this.state.value} onChange={this.handleChange} style={{display:'block', margin: '0px', width:'99%', paddingTop:"8px", paddingBottom:"8px", paddingLeft:"8px", contentAlign:"center"}} type="text" placeholder="Enter article URL"/>
-              <input type="submit" value="Submit"/>
+              <input className="search-button" type="submit" value="Submit"/>
             </Form>
             {this.state.rows}
           </div>
@@ -121,13 +121,4 @@ getArticleData(link){
 }
 
 export default App;
-//The input is stored in this.state.value
-
-
-
-//add new routes under Switch tag
-//also have to <Link to={"/newpage"} className="nav-link" replace> </Link> in whatever button you make to link to the new page
-
-//I took this out for now since it is more of a template for when we get article info from the search
-//{this.state.rows}
 
