@@ -57,41 +57,44 @@ handleSubmit(event){
   if (this.state.value.includes('www.')){
     console.log("TRUE");
     this.getArticleData(this.state.value);
+    this.forceUpdate();
   }
   else{
     this.performSearch(this.state.value);
+    this.forceUpdate();
   }
   event.preventDefault();
 }
 
 getArticleData(link){
 //returns in html right now
+  var search;
   fetch("https://cors-anywhere.herokuapp.com/"+link)
-  .then(function(response){
-    response.text().then(function(data) {
-    //console.log(data);
+  .then(response => {
+    response.text().then(data => {
     var el = document.createElement('html');
     el.innerHTML=data;
-    var search = el.getElementsByTagName('title')[0].innerHTML;
+    search = el.getElementsByTagName('title')[0].innerHTML;
     newsapi.v2.everything({
       q:search,
-    }).then(response => {
+    })
+    .then(response => {
       var articleRows = [];
       var id = 0;
       const articles = Object.values(response.articles);
       articles.forEach(art => {
         var article = Object.values(art);
         article.shift();
-        console.log(article);
         const articleRow = <ArticleRow article={article} key={id}></ArticleRow>
+        console.log(articleRow);
         articleRows.push(articleRow);
         id++;
       });
+      console.log(articleRows);
       console.log("State setted");
       this.setState({rows: articleRows});
 
-    }).catch(function (response) {
-    });
+    })
     });
   });
 }
