@@ -1,7 +1,5 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import './App.css';
-import { withRouter } from 'react-router';
-import background from './background.png';
 
 class Home extends Component {
     render() {

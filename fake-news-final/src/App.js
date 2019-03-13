@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import './App.css';
 import {Form, Row, Table} from 'react-bootstrap';
 import { ReactComponent as Logo } from './NOBS Web Logo.svg';
-import { BrowserRouter as Router, Switch, Link, Route} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Loading from "./loading";
 import Home from "./home";
-import $ from 'jquery';
 import ArticleRow from './ArticleRow';
+import ScrollView from 'react';
 const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI('9e3ac01f44214b3e8f0bcf5c572dc0de');
 
@@ -101,29 +101,21 @@ getArticleData(link){
 
     render() {
       return (
-        <Router>
           <div className="background">
-          <Table className='App-header' style={{width:'100%',margin:'0 auto'}}>
-            <tbody>
-              <tr>
-                <td><Logo className="App-logo"></Logo></td>
-                <td><h3>Fake News Search</h3></td>
-              </tr>
-            </tbody>
-          </Table>
-          <Row style={{width:'100%',margin:'0 auto',textAlign:'center'}}>
-              <Form onSubmit={this.handleSubmit}>
-                      <input value={this.state.value} onChange={this.handleChange} style={{display:'block', margin: '0px', width:'99%', paddingTop:"8px", paddingBottom:"8px", paddingLeft:"8px", contentAlign:"center"}} type="text" placeholder="Enter article URL"/>
-                      <input type="submit" value="Submit" />
-                      {this.state.rows}
-              </Form>
-          </Row>
-            <Switch>
-                <Route exact path="/" component={Home}/>
-                <Route path="/loading" component={Loading}/>
-            </Switch>
+            <table className='App-header' style={{width:'100%',margin:'0 auto'}}>
+              <tbody>
+                <tr>
+                  <td><Logo className="App-logo"></Logo></td>
+                  <td><h3>Fake News Search</h3></td>
+                </tr>
+              </tbody>
+            </table>
+            <Form style={{width:'100%',margin:'0 auto',textAlign:'center'}} onSubmit={this.handleSubmit}>
+              <input value={this.state.value} onChange={this.handleChange} style={{display:'block', margin: '0px', width:'99%', paddingTop:"8px", paddingBottom:"8px", paddingLeft:"8px", contentAlign:"center"}} type="text" placeholder="Enter article URL"/>
+              <input type="submit" value="Submit"/>
+            </Form>
+            {this.state.rows}
           </div>
-        </Router>
       );
     }
 }
