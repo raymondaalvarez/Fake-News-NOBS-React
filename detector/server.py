@@ -1,17 +1,18 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import pickle
+import json
 from urllib.parse import parse_qsl
 
 
 def detecting_fake_news(text):    
-   load_model = pickle.load(open('final_model.sav', 'rb'))
-   prediction = load_model.predict(text)
-   prob = load_model.predict_proba(text)
+    load_model = pickle.load(open('final_model.sav', 'rb'))
+    prediction = load_model.predict(text)
+    prob = load_model.predict_proba(text)
 
-   result = "The given statement is {0}\t".format(prediction[0])
-   result += "The truth probability score is {0}".format(prob[0][1])
-
-   return result
+    result = dict()
+    result["bool"] = str(prediction[0])
+    result["prob"] = str(prob[0][1])
+    return result
 
 
 class Server(BaseHTTPRequestHandler):
@@ -24,8 +25,8 @@ class Server(BaseHTTPRequestHandler):
                self.end_headers()
                
                text = parse_qsl(self.path)
-               response = {"key": detecting_fake_news(list(text[0][1]))}
-               self.wfile.write(response, "UTF-8")
+
+               self.wfile.write(json.dumps(detecting_fake_news(list(text[0][1]))).encode())
            return
 
         
