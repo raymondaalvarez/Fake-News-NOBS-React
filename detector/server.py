@@ -6,7 +6,6 @@ from urllib.parse import parse_qsl
 
 def detecting_fake_news(text):    
     load_model = pickle.load(open('final_model.sav', 'rb'))
-    print(text)
     prediction = load_model.predict(text)
     prob = load_model.predict_proba(text)
 
@@ -27,7 +26,7 @@ class Server(BaseHTTPRequestHandler):
                
                text = parse_qsl(self.path)
 
-               self.wfile.write(json.dumps(detecting_fake_news(text[0][1].split(" "))).encode())
+               self.wfile.write(json.dumps(detecting_fake_news(list(text[0][1]))).encode())
            return
 
         
