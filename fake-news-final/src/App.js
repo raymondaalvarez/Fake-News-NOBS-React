@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import {Form, Row, Table} from 'react-bootstrap';
+import {Form, Row, Table, Button} from 'react-bootstrap';
 import { ReactComponent as Logo } from './NOBS Web Logo.svg';
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Loading from "./loading";
@@ -56,12 +56,16 @@ handleChange(event){
 handleSubmit(event){
   //call API here
   console.log("Input is: " + this.state.value);
-  if (this.state.value.includes('www.')){
+  if (this.state.value.includes('http')){
     console.log("TRUE");
+    var rows = [];
+    this.setState({rows: rows});
     this.getArticleData(this.state.value);
     this.forceUpdate();
   }
   else{
+    var rows = [];
+    this.setState({rows: rows});
     this.performSearch(this.state.value);
     this.forceUpdate();
   }
@@ -87,7 +91,8 @@ getArticleData(link){
         articles.forEach(art => {
           var article = Object.values(art);
           article.shift();
-          fetch("http://localhost:7777/detector?h=" + article[1] )
+          console.log(article[2]);
+          fetch("http://localhost:7777/detector?h=" + article[2] )
             .then(response => {
               response.json()
               .then(data => {
@@ -162,7 +167,6 @@ getArticleData(link){
   });
   this.insertStats();
 }
-
 insertStats(){
   console.log("stats");
   this.state.rows.forEach(function(element){
@@ -178,7 +182,6 @@ insertStats(){
 //3rd atttemp, trying to do async here
 getArticleData(link){
   //returns in html right now
-
   async function getStats(link){
     var search;
     fetch("https://cors-anywhere.herokuapp.com/"+link)
@@ -214,7 +217,6 @@ getArticleData(link){
         console.log(articleRows);
         console.log("State setted");
         this.setState({rows: articleRows});
-
       })
       });
     });
@@ -235,6 +237,7 @@ getArticleData(link){
             <Form style={{width:'100%',margin:'0 auto',textAlign:'center'}} onSubmit={this.handleSubmit}>
               <input value={this.state.value} onChange={this.handleChange} style={{display:'block', margin: '0px', width:'99%', paddingTop:"8px", paddingBottom:"8px", paddingLeft:"8px", contentAlign:"center"}} type="text" placeholder="Enter article URL"/>
               <input className="search-button" type="submit" value="Submit"/>
+              <a className="search-button" href="https://etherscan.io/tx/0x2d6a7b0f6adeff38423d4c62cd8b6ccb708ddad85da5d3d06756ad4d8a04a6a2" target="_blank"> View in Blockchain </a>
             </Form>
             {this.state.rows}
           </div>

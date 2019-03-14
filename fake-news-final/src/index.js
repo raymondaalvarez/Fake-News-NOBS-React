@@ -8,6 +8,7 @@ import * as serviceWorker from './serviceWorker';
 var cors = require('cors');
 var app = express();
 app.use(cors());*/
+
 ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
