@@ -4,10 +4,10 @@ import json
 from urllib.parse import parse_qsl
 
 
-def detecting_fake_news(text):    
+def detecting_fake_news(text):
     load_model = pickle.load(open('final_model.sav', 'rb'))
-    prediction = load_model.predict(text)
-    prob = load_model.predict_proba(text)
+    prediction = load_model.predict([text])
+    prob = load_model.predict_proba([text])
 
     result = dict()
     result["bool"] = str(prediction[0])
@@ -16,20 +16,20 @@ def detecting_fake_news(text):
 
 
 class Server(BaseHTTPRequestHandler):
-    
+
     def do_GET(self):
            if "/detector" in self.path:
                self.send_response(200)
                self.send_header('Access-Control-Allow-Origin', '*')
                self.send_header("Content-type", "application/json")
                self.end_headers()
-               
+
                text = parse_qsl(self.path)
 
-               self.wfile.write(json.dumps(detecting_fake_news(list(text[0][1]))).encode())
+               self.wfile.write(json.dumps(detecting_fake_news(text[0][1])).encode())
            return
 
-        
+
 ### MAIN ###
 if __name__ == "__main__":
 
@@ -37,7 +37,7 @@ if __name__ == "__main__":
        PORT_NUM = 7777
        _server = HTTPServer(("localhost", PORT_NUM), Server)
        print("Started server on port: ", PORT_NUM)
-       
+
        _server.serve_forever()
 
    except KeyboardInterrupt:
