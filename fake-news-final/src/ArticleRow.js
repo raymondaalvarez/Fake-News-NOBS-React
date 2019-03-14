@@ -13,8 +13,7 @@ class ArticleRow extends React.Component {
             <h3 className="app-font">{this.props.article[1]}</h3>
             <p className="app-font-p">{this.props.article[2]}</p>
             <ul>
-              <li className="App-button"><a className="App-button-styles" href="#" target="_blank">Stats</a></li>
-              <li><span>SCORE:{this.props.article[7]}DETAIL:{this.props.article[8]}</span></li>
+              <li className="app-font-p"><span><b>Statistics: </b>This article is likely <b>{this.props.article[7]}</b>. The truth probability score is: {this.props.article[8]}.</span></li>
               <li className="App-button"><a className="App-button-styles" href={this.props.article[3]} target="_blank">Read</a></li>
             </ul>
           </td>
