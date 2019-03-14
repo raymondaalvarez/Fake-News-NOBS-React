@@ -35,13 +35,31 @@ performSearch(query){
     articles.forEach(art => {
       var article = Object.values(art);
       article.shift();
-      console.log("Article: " + article);
-
-      const articleRow = <ArticleRow article={article} key={id}></ArticleRow>
-      articleRows.push(articleRow);
-      id++;
+      fetch("http://localhost:7777/detector?h=" + article[2] )
+            .then(response => {
+              response.json()
+              .then(data => {
+                console.log(data['bool']);
+                article.push(data['bool']);
+                console.log(Number.parseFloat(data['prob'] * 100).toPrecision(4));
+                article.push(Number.parseFloat(data['prob'] * 100).toPrecision(4).toString().concat('%'));
+                return article;
+              })
+                .then(art => {
+                  const articleRow = <ArticleRow article={art} key={id}></ArticleRow>
+                  console.log(articleRow);
+                  articleRows.push(articleRow);
+                  id++;
+                  return articleRow;
+                }).then(row =>{
+                  //console.log(row);
+                  //console.log("State setted");
+                  //this.setState({rows: row});
+                  this.setState({rows: this.state.rows.concat(row)});
+                  //console.log(this.state.rows);
+                  });
+                });
     });
-    this.setState({rows: articleRows});
 
   }).catch(function (response) {
   });
@@ -98,8 +116,8 @@ getArticleData(link){
               .then(data => {
                 console.log(data['bool']);
                 article.push(data['bool']);
-                console.log(data['prob']);
-                article.push(data['prob']);
+                console.log(Number.parseFloat(data['prob'] * 100).toPrecision(4));
+                article.push(Number.parseFloat(data['prob'] * 100).toPrecision(4).toString().concat('%'));
                 return article;
               })
                 .then(art => {
