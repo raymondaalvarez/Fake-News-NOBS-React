@@ -87,7 +87,7 @@ getArticleData(link){
         articles.forEach(art => {
           var article = Object.values(art);
           article.shift();
-          var run = fetch("http://localhost:7777/detector?h=" + article[1] )
+          fetch("http://localhost:7777/detector?h=" + article[1] )
             .then(response => {
               response.json()
               .then(data => {
@@ -104,15 +104,18 @@ getArticleData(link){
                   id++;
                   return articleRow;
                 }).then(row =>{
-                  console.log(row);
-                  console.log("State setted");
-                  this.setState({rows: row});
+                  //console.log(row);
+                  //console.log("State setted");
+                  //this.setState({rows: row});
+                  this.setState({rows: this.state.rows.concat(row)});
+                  //console.log(this.state.rows);
+                  });
                 });
-            });
         });
-      })
+
       });
-    }).then();
+    });
+  });
 }
 /*
 //2nd try, tried to add the stats in afterwards, same async issues
@@ -240,4 +243,3 @@ getArticleData(link){
 }
 
 export default App;
-
