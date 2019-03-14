@@ -99,7 +99,7 @@ getArticleData(link){
                 console.log(data['bool']);
                 article.push(data['bool']);
                 console.log(Number.parseFloat(data['prob'] * 100).toPrecision(4));
-                article.push(Number.parseFloat(data['prob'] * 100).toPrecision(4));
+                article.push(Number.parseFloat(data['prob'] * 100).toPrecision(4).toString().concat('%'));
                 return article;
               })
                 .then(art => {
