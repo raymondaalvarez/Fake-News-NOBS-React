@@ -98,8 +98,8 @@ getArticleData(link){
               .then(data => {
                 console.log(data['bool']);
                 article.push(data['bool']);
-                console.log(data['prob']);
-                article.push(data['prob']);
+                console.log(Number.parseFloat(data['prob'] * 100).toPrecision(4));
+                article.push(Number.parseFloat(data['prob'] * 100).toPrecision(4));
                 return article;
               })
                 .then(art => {
