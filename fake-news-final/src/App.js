@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import {Form, Row, Table, Button} from 'react-bootstrap';
+import {Form} from 'react-bootstrap';
 import { ReactComponent as Logo } from './NOBS Web Logo.svg';
-import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import Loading from "./loading";
-import Home from "./home";
 import ArticleRow from './ArticleRow';
-import ScrollView from 'react';
-import $ from "jquery";
 const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI('9e3ac01f44214b3e8f0bcf5c572dc0de');
 
@@ -140,106 +135,7 @@ getArticleData(link){
     });
   });
 }
-/*
-//2nd try, tried to add the stats in afterwards, same async issues
-getArticleData(link){
-//returns in html right now
-  var search;
-  fetch("https://cors-anywhere.herokuapp.com/"+link)
-  .then(response => {
-    response.text().then(data => {
-    var el = document.createElement('html');
-    el.innerHTML=data;
-    search = el.getElementsByTagName('title')[0].innerHTML;
-    newsapi.v2.everything({
-      q:search,
-    })
-    .then(response => {
-      var articleRows = [];
-      var stats = [];
-      var id = 0;
-      const articles = Object.values(response.articles);
-      articles.forEach(art => {
-        var article = Object.values(art);
-        article.shift();
-        fetch("http://localhost:7777/detector?h=" + article[1] )
-      .then(res => {
-        return res.json().then(function(data){
-          console.log(data['bool']);
-          stats.push(data['bool']);
-          console.log(data['prob']);
-          stats.push(data['prob']);
-        });
-      });
-        const articleRow = <ArticleRow article={article} key={id}></ArticleRow>
-        console.log(articleRow);
-        articleRows.push(articleRow);
-        id++;
-      });
-      console.log(articleRows);
-      console.log("State setted");
-      this.setState({rows: articleRows});
-      this.setState({stats: stats});
-    })
-    });
-  });
-  this.insertStats();
-}
-insertStats(){
-  console.log("stats");
-  this.state.rows.forEach(function(element){
-    var temp = element;
-    temp.push(this.state.stats[this.state.rows.indexOf(element)*2]);
-    temp.push(this.state.stats[this.state.rows.indexOf(element)*2+1]);
-    element = temp;
-    console.log(element);
-  });
-}*/
 
-/*
-//3rd atttemp, trying to do async here
-getArticleData(link){
-  //returns in html right now
-  async function getStats(link){
-    var search;
-    fetch("https://cors-anywhere.herokuapp.com/"+link)
-    .then(response => {
-      response.text().then(data => {
-      var el = document.createElement('html');
-      el.innerHTML=data;
-      search = el.getElementsByTagName('title')[0].innerHTML;
-      newsapi.v2.everything({
-        q:search,
-      })
-      .then(response => {
-        var articleRows = [];
-        var id = 0;
-        const articles = Object.values(response.articles);
-        articles.forEach(art => {
-          var article = Object.values(art);
-          article.shift();
-          var statsData = await fetch("http://localhost:7777/detector?h=" + article[1] )
-        .then(res => {
-          return res.json().then(function(data){
-            console.log(data['bool']);
-            article.push(data['bool']);
-            console.log(data['prob']);
-            article.push(data['prob']);
-          });
-        });
-          const articleRow = <ArticleRow article={article} key={id}></ArticleRow>
-          console.log(articleRow);
-          articleRows.push(articleRow);
-          id++;
-        });
-        console.log(articleRows);
-        console.log("State setted");
-        this.setState({rows: articleRows});
-      })
-      });
-    });
-    }
-  }*/
 
     render() {
       return (
